@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+	<head>
+		<script
+		type='text/javascript'
+		src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'>
+	</script>
+	 <title>Brigades!</title>
+	</head>
+	<h1>
+		Global Brigades!
+	</h1>
+	<body>
+		<div id="listBrigades">
+			<button id="allBrigades" type="button">List All Brigades</button>
+		</div>
+		<form id="f1">
+			<p id="inputArea"><b>New Brigade</b></p>
+			<label for="name">Name</label>
+			<input id="name" type="text" value="" /><br><br>
+			<label for="place">Place</label>
+			<input id="place" type="text" value="" /><br><br>
+			<label for="male">Program Connection</label>
+			<input id="programConnection" type="text" name="programConnection" value="" /><br><br>
+			<input type="submit" value="Create"/>
+		</form>
+		<br><br>
+
+		<form id="f2">
+			<p id="inputArea"><b>Find Brigade</b></p>
+			<label for="name2">Name</label>
+			<input id="name2" type="text" value='' />
+			<input type="submit" value="Find Brigade"/>
+		</form>
+		<div id = "output"></div>
+		<br><br>
+
+		<div id = "output2">
+			<form id="f3">
+				<p id="inputArea2"><b>Brigade</b></p>
+				<label for="name3">Name</label>
+				<input id="name3" type="text" >
+				<label for="place3">Place</label>
+				<input id="place3" type="text" >
+				<label for="pConn">Program Connection</label>
+				<input id="pConn" type="text" >
+				<button type="button">Update Brigade</button>
+				<input id = "deletebrigade" type="submit" value = "Delete Brigade"/>
+			</form>
+		</div>
+
+
+		<div id = "output3"></div>
+	</body>
+	<script type='text/javascript' src='javascripts/form.js'></script>
+</html>

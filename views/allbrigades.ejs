@@ -1,0 +1,16 @@
+
+<table border = 1 style="width:50%">
+  <tr>
+    <th style="text-align:left">Name</th>
+    <th>Place</th>
+    <th style="text-align:right">Program Connection</th>
+  </tr>
+  <!--  Notice the loop goes over a few lines -->
+  <% for (var i = 0; i < brigadeInfo.length; i++) {   %>
+  <tr>
+    <td> <%= brigadeInfo[i].name %> </td>
+    <td style="text-align:center"> <%= brigadeInfo[i].place%> </td>
+    <td style="text-align:right"> <%= brigadeInfo[i].programConnection %> </td>
+  </tr>
+    <% } %> <!--  Close the loop  -->
+</table>
