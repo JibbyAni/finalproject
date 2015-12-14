@@ -3,6 +3,7 @@
  * To install:  npm install mongodb --save
  */
 var mongoClient = require('mongodb').MongoClient;
+var fs = require('fs');
 
 /*
  * This connection_string is for mongodb running locally.
@@ -24,12 +25,32 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
 // Global variable of the connected database
 var mongoDB; 
 
+var x;
+
+
 // Use connect method to connect to the MongoDB server
 mongoClient.connect('mongodb://'+connection_string, function(err, db) {
   if (err) doError(err);
   console.log("Connected to MongoDB server at: "+connection_string);
   mongoDB = db; // Make reference to db globally available.
+  //console.log(mongoDB);
 });
+
+
+
+//read courses json object file to get all courses
+// var obj;
+
+// fs.readFile('courses.json', 'utf8', function (err, data) {
+//   x=5 
+//   if (err) throw err;
+//   obj = JSON.parse(data);
+   
+
+// });
+
+
+
 
 /*
  * In the methods below, notice the use of a callback argument,
@@ -47,10 +68,11 @@ mongoClient.connect('mongodb://'+connection_string, function(err, db) {
  * See the API for more information on insert:
  * http://mongodb.github.io/node-mongodb-native/2.0/api/Collection.html#insertOne
  */
-exports.create = function(collection, data, callback) {
+exports.create = function(courseid, lecture, callback) {
   console.log("4. Start insert function in mongoModel");
   // Do an asynchronous insert into the given collection
-  mongoDB.collection(collection).insertOne(
+
+  mongoDB.collection("schedule").insertOne(
     data,                     // the object to be inserted
     function(err, status) {   // callback upon completion
       if (err) doError(err);
@@ -74,16 +96,21 @@ exports.create = function(collection, data, callback) {
  * and toArray:
  * http://mongodb.github.io/node-mongodb-native/2.0/api/Cursor.html#toArray
  */
-exports.retrieve = function(collection, query, callback) {
+
+exports.retrieve = function(courseid, lecture, callback) {
   /*
    * The find sets up the cursor which you can iterate over and each
    * iteration does the actual retrieve. toArray asynchronously retrieves the
    * whole result set and returns an array.
    */
-  mongoDB.collection(collection).find(query).toArray(function(err, docs) {
+   mongoDB.collection("courses").find({"courseid": courseid , "lecture": 'Lec ' + lecture}).toArray(function(err, docs) {
+
+  //mongoDB.collection(collection).find(query).toArray(function(err, docs) {
+
     if (err) doError(err);
     // docs are MongoDB documents, returned as an array of JavaScript objects
     // Use the callback provided by the controller to send back the docs.
+    // console.log(docs)
     callback(docs);
   });
 }

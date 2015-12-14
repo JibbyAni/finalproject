@@ -18,6 +18,9 @@ app.use(morgan('tiny'));
 // parse application/x-www-form-urlencoded, with extended qs library
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Handle static files
+app.use(express.static(__dirname + '/public'));
+
 // Load all routes in the routes directory
 fs.readdirSync('./routes').forEach(function (file){
   // There might be non-js files in the directory that should not be loaded
@@ -26,9 +29,6 @@ fs.readdirSync('./routes').forEach(function (file){
   	require('./routes/'+ file).init(app);
   	}
 });
-
-// Handle static files
-app.use(express.static(__dirname + '/public'));
   
 // Catch any routes not already handed with an error message
 app.use(function(req, res) {

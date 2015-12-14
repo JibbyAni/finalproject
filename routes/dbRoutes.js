@@ -4,12 +4,12 @@ var mongoModel = require("../models/mongoModel.js")
 // Define the routes for this controller
 exports.init = function(app) {
   app.get('/', index); // essentially the app welcome page
-  // The collection parameter maps directly to the mongoDB collection
-  app.put('/:collection', doCreate); // CRUD Create
-  app.get('/:collection', doRetrieve); // CRUD Retrieve
+  // // The collection parameter maps directly to the mongoDB collection
+  app.put('/:course/:lecture', doCreate); // CRUD Create
+  app.get('/:course/:lecture', doRetrieve); // CRUD Retrieve
   app.post('/:collection', doUpdate); // CRUD Update
   app.delete('/:collection', doDelete); //CRUD Delete
-  // The CRUD Delete path is left for you to define
+  // // The CRUD Delete path is left for you to define
 }
 
 // No path:  display instructions for use
@@ -53,8 +53,9 @@ doCreate = function(req, res){
    *    is successful, a callback function is provided for the model to 
    *    call in the future whenever the create has completed.
    */
-  mongoModel.create ( req.params.collection, 
-	                    req.body,
+  mongoModel.create ( req.params.course,
+                req.params.lecture, 
+	                    // req.body,
 		                  function(result) {
 		                    // result equal to true means create was successful
   		                  var success = (result ? "Create successful" : "Create unsuccessful");
@@ -81,9 +82,10 @@ doRetrieve = function(req, res){
    * modelData is an array of objects returned as a result of the Retrieve
    */
   mongoModel.retrieve(
-    req.params.collection, 
-    req.query,
+    req.params.course,
+    req.params.lecture, 
 		function(modelData) {
+      console.log(modelData)
 		  if (modelData.length) {
         res.render('results',{title: 'Mongo Demo', obj: modelData});
       } else {

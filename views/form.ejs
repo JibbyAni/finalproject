@@ -1,56 +1,58 @@
 <!doctype html>
 <html>
 	<head>
+<!-- 		<link href='stylesheets/styles.css' rel='stylesheet' type='text/css' />
+ -->		      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
 		<script
 		type='text/javascript'
 		src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'>
+
 	</script>
-	 <title>Brigades!</title>
+	      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
+	 <title>Scheduler</title>
 	</head>
 	<h1>
-		Global Brigades!
+		Course Scheduler!
 	</h1>
 	<body>
-		<div id="listBrigades">
-			<button id="allBrigades" type="button">List All Brigades</button>
-		</div>
-		<form id="f1">
-			<p id="inputArea"><b>New Brigade</b></p>
-			<label for="name">Name</label>
-			<input id="name" type="text" value="" /><br><br>
-			<label for="place">Place</label>
-			<input id="place" type="text" value="" /><br><br>
-			<label for="male">Program Connection</label>
-			<input id="programConnection" type="text" name="programConnection" value="" /><br><br>
-			<input type="submit" value="Create"/>
-		</form>
-		<br><br>
+		<div id= "updatePage">
 
-		<form id="f2">
-			<p id="inputArea"><b>Find Brigade</b></p>
-			<label for="name2">Name</label>
-			<input id="name2" type="text" value='' />
-			<input type="submit" value="Find Brigade"/>
-		</form>
-		<div id = "output"></div>
-		<br><br>
+			<div id="listCourses">
+				<button id="allCourses" type="button">List All Courses</button>
+			</div>
+			<!-- <form id="f1">
+				<p id="inputArea"><b>New Brigade</b></p>
+				<label for="name">Name</label>
+				<input id="name" type="text" value="" /><br><br>
+				<label for="place">Place</label>
+				<input id="place" type="text" value="" /><br><br>
+				<label for="male">Program Connection</label>
+				<input id="programConnection" type="text" name="programConnection" value="" /><br><br>
+			</form> -->
+			<br><br>
 
-		<div id = "output2">
-			<form id="f3">
-				<p id="inputArea2"><b>Brigade</b></p>
-				<label for="name3">Name</label>
-				<input id="name3" type="text" >
-				<label for="place3">Place</label>
-				<input id="place3" type="text" >
-				<label for="pConn">Program Connection</label>
-				<input id="pConn" type="text" >
-				<button type="button">Update Brigade</button>
-				<input id = "deletebrigade" type="submit" value = "Delete Brigade"/>
+			<form id="f2">
+				<p id="inputArea"><b>Add Course</b></p>
+				<label for="coursenum">Course Number</label>
+				<input id="coursenum" type="text" value='' />
+				<label for="lecture">Lecture Number</label>
+				<input id="lecture" type="text" value='' />
+				<input type="submit" value="Find Course"/>
 			</form>
+					<br><br>
+					<div id = "output"></div>
+
+			<br><br>
+
+			<input id="addCourse" type="submit" value="Add to Schedule"></input>
+			<br><br>
+	 		<div id = "output2"></div>
+
+
+
 		</div>
-
-
-		<div id = "output3"></div>
 	</body>
 	<script type='text/javascript' src='javascripts/form.js'></script>
 </html>
