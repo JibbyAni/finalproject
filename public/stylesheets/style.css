@@ -5,11 +5,6 @@
 
 body {
 	padding: 20px;
-  font-family: "xkcd", sans-serif;
-  font-size: 20px;
   color: #f83;
   margin-top: 25px;
-  background-image: url(images/tartan-background.jpg);
-    background-repeat: repeat-x;
-    background-color: #130000;
 }

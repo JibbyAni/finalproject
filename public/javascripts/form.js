@@ -1,39 +1,55 @@
  
+
 $(document).ready(function() {    // do once original document loaded and ready
 
-		//PUT request create
-        $('#addCourse').submit(function(event) {
-        	event.preventDefault()
+	
+		//ADD COURSE TO SCHEDULE
+        $('#addToSchedule').click(function(event) {
+        	var course = $('#courseinput').text();
+        	console.log(course);
+        	var lecture	= $('#lectureinput').text();
+        	var time= $('#timeinput').text();
+        	// event.preventDefault()
+         	 // $.getJSON('../courses1.json',function(data) {
+					localStorage.setItem("myschedule", ("course: "+ course + ", " + "lecture :" + lecture + ", " + "time :" + time));
+        	  document.getElementById("output2").innerHTML = localStorage.getItem("myschedule");
+
+			//	})
+        	
 
         	//pull variables from the form
-        	var course = $('#course').val();
-        	var lecture =  $('#lecture').val();
+    //     	var course = $('#course').val();
+    //     	var lecture =  $('#lecture').val();
 
-				$.ajax({
-				    url: '/' + course + '/' + lecture,
-				    type: 'PUT',
-				    data: {
-				    	"course": course,
-				    	"lecture": lecture
-				    },
-				    success: function(result) {
-  					console.log("success")
-  					$('#output2').html("<p> The course"+ course + "," + lecture +
-				    		" has been added to your schedule</p> ");
+				// $.ajax({
+				//     url: '/' + course + '/' + lecture,
+				//     type: 'PUT',
+				//     data: {
+				//     	"course": course,
+				//     	"lecture": lecture
+				//     },
+				//     success: function(result) {
+  		// 			console.log("success")
+  		// 			$('#output2').html("<p> The course"+ course + "," + lecture +
+				//     		" has been added to your schedule</p> ");
 		   
-				     },
-				    error: function(jqxhr){
-				    	console.log(jqxhr)
-				    }
-					});
+				//      },
+				//     error: function(jqxhr){
+				//     	console.log(jqxhr)
+				//     }
+				// 	});
 		});
 
-        //GET Request
+        //GET Requesting course info
 		$('#f2').submit(function(event) {
         	event.preventDefault()
         	//pull name from the form
         	var course = $('#coursenum').val();
         	var lecture = $('#lecture').val();
+        	var time = $('#time').val();
+        	console.log("time", time)
+
+
         	// somehow have my time show as well 
 
 				$.ajax({
@@ -45,8 +61,9 @@ $(document).ready(function() {    // do once original document loaded and ready
 				    // },
 				    success: function(result) {
 				    	// search for course
-				    	$('#output').html("<p>"+ course + "," + lecture +
-				    		"</p> ");
+				    	$('#courseinput').html(course);
+				    	$('#lectureinput').html(lecture);
+				    	$('#timeinput').html(time);
 				      },
 				    error: function(jqxhr){
 				    	console.log(jqxhr)
@@ -58,9 +75,11 @@ $(document).ready(function() {    // do once original document loaded and ready
 		$('#allCourses').click(function(event) {
         	event.preventDefault()
         	//list all brigades 
+
 				$.getJSON('../courses1.json',function(data) {
-					console.log("data", data)
-					$('#listCourses').html(data);
+					
+					$('#listCourses').html(JSON.stringify(data))
+					console.log("data", data);
 				})
 		});
 
@@ -130,6 +149,20 @@ $(document).ready(function() {    // do once original document loaded and ready
 		// });
 
  		// $('#findTime').click(function(event) {
+		// 	event.preventDefault()
+		// 	$.ajax({
+		// 		url: '/' ,
+
+		// 		console.log("HERE")
+		// 		$('#output3').html("<p> The time that you are not free today includes: "+ "</p>");
+		// 		      }
+		// 	})
+
+
+
+		// });
+
+ // $('#findTime').click(function(event) {
 		// 	event.preventDefault()
 		// 	$.ajax({
 		// 		url: '/' ,

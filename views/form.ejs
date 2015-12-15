@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
 	<head>
-<!-- 		<link href='stylesheets/styles.css' rel='stylesheet' type='text/css' />
- -->		      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+		<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />
+ 		      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
 
 		<script
 		type='text/javascript'
@@ -10,6 +10,8 @@
 
 	</script>
 	      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
+
 
 	 <title>Scheduler</title>
 	</head>
@@ -39,14 +41,25 @@
 				<input id="coursenum" type="text" value='' />
 				<label for="lecture">Lecture Number</label>
 				<input id="lecture" type="text" value='' />
+				<label for="time">Time</label>
+				<input id= "time" type="time" class="datepicker">
 				<input type="submit" value="Find Course"/>
+				
 			</form>
 					<br><br>
-					<div id = "output"></div>
+					<div id = "output">
+						<p id = "courseinput">
+						</p>
+						<p id = "lectureinput">
+						</p>
+						</p>
+						<p id = "timeinput">
+						</p>
+					</div>
 
 			<br><br>
 
-			<input id="addCourse" type="submit" value="Add to Schedule"></input>
+			<button id="addToSchedule" type="submit" value="">Add to Schedule</button>
 			<br><br>
 	 		<div id = "output2"></div>
 
