@@ -38,17 +38,6 @@ mongoClient.connect('mongodb://'+connection_string, function(err, db) {
 
 
 
-//read courses json object file to get all courses
-// var obj;
-
-// fs.readFile('courses.json', 'utf8', function (err, data) {
-//   x=5 
-//   if (err) throw err;
-//   obj = JSON.parse(data);
-   
-
-// });
-
 
 
 
@@ -103,10 +92,10 @@ exports.retrieve = function(courseid, lecture, callback) {
    * iteration does the actual retrieve. toArray asynchronously retrieves the
    * whole result set and returns an array.
    */
-   mongoDB.collection("courses").find({"courseid": courseid , "lecture": 'Lec ' + lecture}).toArray(function(err, docs) {
+   //find the course that matches the input
+   mongoDB.collection("courses").find({"courses.0": { $eq: courseid } }).toArray(function(err, docs) {
 
-  //mongoDB.collection(collection).find(query).toArray(function(err, docs) {
-
+    console.log(docs);
     if (err) doError(err);
     // docs are MongoDB documents, returned as an array of JavaScript objects
     // Use the callback provided by the controller to send back the docs.

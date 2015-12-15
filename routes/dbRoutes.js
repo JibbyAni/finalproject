@@ -2,6 +2,8 @@
 var mongoModel = require("../models/mongoModel.js")
 
 // Define the routes for this controller
+//from app.js reads these routes --> routes call a function and goes
+//to mongoModel
 exports.init = function(app) {
   app.get('/', index); // essentially the app welcome page
   // // The collection parameter maps directly to the mongoDB collection
@@ -55,7 +57,6 @@ doCreate = function(req, res){
    */
   mongoModel.create ( req.params.course,
                 req.params.lecture, 
-	                    // req.body,
 		                  function(result) {
 		                    // result equal to true means create was successful
   		                  var success = (result ? "Create successful" : "Create unsuccessful");

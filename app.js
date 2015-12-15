@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Handle static files
 app.use(express.static(__dirname + '/public'));
 
-// Load all routes in the routes directory
+// Load all routes in the routes directory...goes to dbRoutes to check routes
 fs.readdirSync('./routes').forEach(function (file){
   // There might be non-js files in the directory that should not be loaded
   if (path.extname(file) == '.js') {

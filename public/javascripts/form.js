@@ -6,14 +6,12 @@ $(document).ready(function() {    // do once original document loaded and ready
 		//ADD COURSE TO SCHEDULE
         $('#addToSchedule').click(function(event) {
         	var course = $('#courseinput').text();
-        	console.log(course);
         	var lecture	= $('#lectureinput').text();
         	var time= $('#timeinput').text();
-        	// event.preventDefault()
-         	 // $.getJSON('../courses1.json',function(data) {
+
 					localStorage.setItem("myschedule",
-					 ("course: "+ course + ", " + "lecture :" + lecture +
-					  ", " + "time :" + time));
+					 ( course + ", " + lecture +
+					  ", " + time));
         	  document.getElementById("output2").innerHTML 
         	  = localStorage.getItem("myschedule");
 
@@ -30,15 +28,13 @@ $(document).ready(function() {    // do once original document loaded and ready
 				$.ajax({
 				    url: '/' + course + '/' + lecture,
 				    type: 'GET',
-				    // data: {
-				    // 	"course": course
-				    // 	"lecture" : lecture
-				    // },
+
 				    success: function(result) {
 				    	// search for course
-				    	$('#courseinput').html(course);
-				    	$('#lectureinput').html(lecture);
-				    	$('#timeinput').html(time);
+
+				    	$('#courseinput').html("course :" + course);
+				    	$('#lectureinput').html("lecture :" +lecture);
+				    	$('#timeinput').html("time :" +time);
 				      },
 				    error: function(jqxhr){
 				    	console.log(jqxhr)
@@ -49,9 +45,9 @@ $(document).ready(function() {    // do once original document loaded and ready
 
 		$('#allCourses').click(function(event) {
         	event.preventDefault()
-        	//list all brigades 
+        	//list all courses
 
-				$.getJSON('../courses1.json',function(data) {
+				$.getJSON('../courses.json',function(data) {
 					
 					$('#listCourses').html(JSON.stringify(data))
 					console.log("data", data);
